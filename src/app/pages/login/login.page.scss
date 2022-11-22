@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+   
+}
+
+.contenedor-principal{
+    text-align: left;
+    border-top: 2px solid lightgray;
+    
+}
+.contenedor-login{
+    height: 180px;
+    margin-left: 500px;
+}
+
+.pass{
+    border: 2px solid lightgray;
+}
+
+.text-red{
+    color: red;
+    font-size: small;
+}
+
+.principal-button{
+    text-align-last: center;
+    height: 100px;
+}
+.button-1{
+    margin-right: 50px;
+    margin-top: 30px;
+}

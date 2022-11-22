@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar class="button">
+    <ion-title class="ion-text-center"><strong>Bienvenido!</strong></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ">
+  <ion-img src="assets/images/good-dog.svg"></ion-img>
+  <ion-item class="ion-margin-top">
+    <ion-label> Email: </ion-label>
+    <ion-input [(ngModel)]="modeloUsuario" type="email" placeholder="correo@example.com" required="required"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Password: </ion-label>
+    <ion-input [(ngModel)]="modeloContrasena"type="password" required minlength="6" placeholder="******" required="required"></ion-input>
+  </ion-item>
+  
+
+  <ion-content class="principal-button ">
+    <ion-button (click)="validarCredenciales()" expand="block"  class="ion-padding button">Ingresar</ion-button>
+    </ion-content>
+    <ion-content class="principal-button ">
+      <ion-button (click)="cambiaPagina()" expand="block" class="ion-padding button">Registrate</ion-button>
+      </ion-content>
+
+
+</ion-content>

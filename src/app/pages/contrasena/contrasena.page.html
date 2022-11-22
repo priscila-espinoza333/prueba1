@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro!</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-item>
+  <ion-label position="stacked">Email: </ion-label>
+  <ion-input [(ngModel)]="modeloUsuario" type="email" placeholder="correo@example.com" required="required"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="stacked">Ingrese su contraseña: </ion-label>
+  <ion-input [(ngModel)]="modeloContrasena"type="password" placeholder="******" required="required"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="stacked">Nombre: </ion-label>
+  <ion-input [(ngModel)]="modeloNombre"type="text"  placeholder="Ingrese valor" required="required"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="stacked">Apellido: </ion-label>
+  <ion-input [(ngModel)]="modeloApellido"type="text" placeholder="Ingrese valor" required="required"></ion-input>
+</ion-item>
+
+  <ion-button (click)="postUser()" color="success">Confirmar</ion-button>
+</ion-content>
+ 
