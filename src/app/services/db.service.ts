@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 
 @Injectable({
@@ -10,7 +9,7 @@ export class DbService {
 
   url: string = 'https://fer-sepulveda.cl/API_PRUEBA2/api-service.php';
 
-  constructor(private router: Router, private http: HttpClient, private sqlite: SQLite) { }
+  constructor(private http: HttpClient, private sqlite: SQLite) { }
 
   canActivate(){
 

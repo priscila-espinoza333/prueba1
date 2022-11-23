@@ -29,3 +29,8 @@
     --background: #6C63FF;
     --color: #FFFFFF;
 }
+
+body.scanner-active {
+    --background: transparent;
+    --ion-background-color: transparent;
+}

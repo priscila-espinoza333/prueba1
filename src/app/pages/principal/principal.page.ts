@@ -16,8 +16,10 @@ export class PrincipalPage implements OnInit {
   modeloUsuario: string = '';
   url: string = 'https://fer-sepulveda.cl/API_PRUEBA2/api-service.php?nombreFuncion=UsuarioObtenerNombre&correo=';
   texto: string = '';
+  contenido_visible = '';
   
   apoyo = [];
+  split = [];
   modeloContrasena = '';
   modeloContrasenaNueva = '';
   constructor(private router: Router, 
@@ -96,10 +98,10 @@ export class PrincipalPage implements OnInit {
     let that = this;
     this.texto = '';
     document.querySelector('body').classList.add('scanner-active');
+    this.contenido_visible = 'hidden'
     await BarcodeScanner.checkPermission({ force: true });
 
     BarcodeScanner.hideBackground();
-
 
     const result = await BarcodeScanner.startScan();
 
@@ -107,11 +109,45 @@ export class PrincipalPage implements OnInit {
       setTimeout(function () {
         console.log(result.content);
         that.texto = result.content;
+        that.split = that.texto.split('|');
+        that.validaQR();
         document.querySelector('body').classList.remove('scanner-active');
       }, 3000);
-
+      that.contenido_visible = '';
     }
+  }
 
+  validaQR(){
+    let that = this;
+    this.loadingController.create({
+      message: 'Registrando....',
+      spinner: 'lines'
+    }).then(async data => {
+      data.present();
+      try{
+        let respuesta = await this.api.asistenciaAlmacenar(that.correo, that.split[0]);
+        if(respuesta['result'][0].RESPUESTA == 'OK'){
+          that.presentToast('Asistencia registrada exitosamente!');
+          that.presentToast('Presente en ' + that.split[1]);
+        }else{
+          that.presentToast('Usted ya se encuentra presente');
+        }
+      }catch(error){
+        let respuesta = await this.api.asistenciaAlmacenar(that.correo, that.split[0]);
+        if(respuesta['result'][0].RESPUESTA =='ERR03'){
+          that.presentToast('Error QR');
+        }
+      }
+      data.dismiss();
+    });
+
+  }
+
+  eliminarAsistencia(){
+    let that = this;
+    return new Promise(resolve =>{
+      resolve(that.http.get('https://fer-sepulveda.cl/API_PRUEBA2/api-service.php?nombreFuncion=EliminarAsistencia&correo=' + that.correo).toPromise())
+    });
   }
 }
 

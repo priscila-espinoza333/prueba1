@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header [style.visibility]="contenido_visible">
   <ion-toolbar>
     <ion-title></ion-title>
     <ion-buttons slot="start">
@@ -19,14 +19,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [style.visibility]="contenido_visible">
   <div class="ion-padding">
   <ion-button expand="block" color="medium" class="ion-margin-top button" shape="round" id="open-modal">Restablecer Contraseña</ion-button>
    
   <!--Codigo QR-->
   <div>
     <ion-button (click)="scanQR()" expand="block">QR</ion-button>
-    <ion-label class="titulo"> {{ texto }} </ion-label>
+    <ion-label class="titulo"> {{ split[1] }} </ion-label>
+    <ion-button (click)="eliminarAsistencia()" expand="block">Eliminar asistencia</ion-button>
   </div>
   
   <!-- Modal  -->
